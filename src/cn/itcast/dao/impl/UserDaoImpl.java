@@ -11,6 +11,7 @@ public class UserDaoImpl implements UserDao {
     private JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
     @Override
     public User findUserByUsernameAndPassword(String username, String password) {
+        System.out.println("username = "+username + " , pwd = "+password);
         try {
             String sql = "select * from user where username = ? and password = ?";
             User student = template.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), username, password);
